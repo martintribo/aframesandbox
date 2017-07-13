@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './index'
   ],
