@@ -13,10 +13,10 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: [ 'file-loader?name=[name].[ext]' ]
-      },
+      // {
+      //   test: /\.html$/,
+      //   use: [ 'file-loader?name=[name].[ext]' ]
+      // },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   },
