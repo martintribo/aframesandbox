@@ -25,8 +25,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new ToggableWatchPlugin({
-      forwardPaths: [
-        '/home/martin/development/aframesandbox/toggablewatcher/client.js'
+      forwardByDefault: true,
+      withholdPaths: [
+        '/home/martin/development/aframesandbox/toggablewatcher/subscene.html'
       ]
     })
   ],

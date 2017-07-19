@@ -4,11 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aa-Frame Sandbox</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      #container {
+        width: 70%;
+        height: 100%;
+        display: inline-block;
+      }
+      #chat_embed {
+        width: 29%;
+        height: 100%;
+        display: inline-block;
+      }
+    </style>
     <script src="bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <script src="easyrtc/easyrtc.js"></script>
   </head>
   <body>
-    <div id="container"></div>
+    <div id="container">
+    </div>
+    <!-- <iframe frameborder="0"
+        scrolling="no"
+        id="chat_embed"
+        src="http://www.twitch.tv/nitramtj/chat">
+</iframe> -->
   </body>
 </html>
