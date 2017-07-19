@@ -6,6 +6,7 @@ var socketIo = require("socket.io");        // web socket external module
 var easyrtc = require("easyrtc");               // EasyRTC external module
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
+var toggableWatchMiddleware = require('./toggablewatcher/middleware');
 
 var webpackConfig = require('./webpack.config');
 
@@ -86,6 +87,8 @@ var rtc = easyrtc.listen(app, socketServer, null, function(err, rtcRef) {
         appObj.events.defaultListeners.roomCreate(appObj, creatorConnectionObj, roomName, roomOptions, callback);
     });
 });
+
+toggableWatchMiddleware(compiler, socketServer);
 
 //listen on port
 webServer.listen(port, function () {
