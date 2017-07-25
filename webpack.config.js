@@ -13,13 +13,22 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: {
+    alias: {
+      aframe: 'aframe/src/index'
+    }
+  },
   module: {
     rules: [
       // {
       //   test: /\.html$/,
       //   use: [ 'file-loader?name=[name].[ext]' ]
       // },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+      // { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
     ]
   },
   plugins: [
@@ -27,7 +36,7 @@ module.exports = {
     new ToggableWatchPlugin({
       forwardByDefault: true,
       withholdPaths: [
-        '/home/martin/development/aframesandbox/toggablewatcher/subscene.html'
+        './templates/subscene.html'
       ]
     })
   ],

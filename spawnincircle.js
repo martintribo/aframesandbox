@@ -1,4 +1,4 @@
-import AFRAME from 'aframe';
+// import AFRAME from 'aframe';
 
 AFRAME.registerComponent('spawn-in-circle', {
   schema: {

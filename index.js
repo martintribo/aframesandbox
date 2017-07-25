@@ -3,25 +3,30 @@
 import createElement from 'virtual-dom/create-element';
 import diff from 'virtual-dom/diff';
 import patch from 'virtual-dom/patch';
-import './test';
+import './aframesetup';
 
-let sceneTree = require('./html-hscript-loader!./subscene.html');
+// import {element} from './loaders/naf-template-loader!./templates/player';
+import sceneHTML from './templates/scene';
+
+let sceneTree = require('./html-hscript-loader!./templates/subscene.html');
 const sceneNode = createElement(sceneTree);
 
+// TODO: Rethink hotswapping asset tree updates.
+// Assets are meant for first time loading, so it doesn't make much sense to put runtime updates here
+// However, if the project were bundled, it'd make sense to put assets here.
+// It might make sense to code as if assets are being put here, but the build system could load them differently if hotswapping in
 let assetTree = require('./html-hscript-loader!./assets.html');
 const assetNode = createElement(assetTree);
 
 window.onload = function () {
-  require('./aframesetup'); // A-Frame applies styles to the body, so need to load after the page is loaded
-  document.querySelector('#container').innerHTML = require('raw-loader!./scene.html');
+  document.querySelector('#container').innerHTML = sceneHTML;
   document.querySelector('#sceneNode').prepend(assetNode);
   document.querySelector('#subSceneContainer').appendChild(sceneNode);
 };
 
 if (module.hot) {
-  module.hot.accept('./html-hscript-loader!./subscene.html', function () {
-    console.log('swap');
-    var newSceneTree = require('./html-hscript-loader!./subscene.html');
+  module.hot.accept('./html-hscript-loader!./templates/subscene.html', function () {
+    var newSceneTree = require('./html-hscript-loader!./templates/subscene.html');
     var patches = diff(sceneTree, newSceneTree);
     patch(sceneNode, patches);
     sceneTree = newSceneTree;
