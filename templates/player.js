@@ -1,5 +1,5 @@
 export var template = `
-  <a-entity class="avatar" camera="userHeight: 1.6" wasd-controls look-controls>
+  <a-entity class="avatar" camera="userHeight: 1.6" universal-controls look-controls jump-ability kinematic-body>
     <a-sphere class="head"
       color="#5985ff"
       scale="0.45 0.5 0.4"

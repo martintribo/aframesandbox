@@ -1,4 +1,4 @@
-import playerTemplate from '../loaders/naf-template-loader!./player';
+// import playerTemplate from '../loaders/naf-template-loader!./player';
 import thirdPlayer from '../loaders/naf-template-loader!./thirdpersonviewplayer';
 // TODO: Make a loader that takes an html file and generates a file like this.
 // The loader can parse the networked component template value for non id references.
@@ -13,10 +13,11 @@ export default `
       <a-entity camera position="0 2 4"></a-entity>
     </a-box>-->
 
-    <a-entity id="player" networked="template:${thirdPlayer};" position="0 2 0">
+    <a-entity template="src:${thirdPlayer}">
     </a-entity>
 
   <a-entity id="subSceneContainer">
   </a-entity>
 </a-scene>
 `;
+console.log('third ' + thirdPlayer);
